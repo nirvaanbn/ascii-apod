@@ -1,5 +1,9 @@
 ## ascii-apod
 
+<p align="center">
+  <img src="assets/lockscreen.png" alt="ascii-apod on the lock screen" width="480">
+</p>
+
 #### *only compatible with distros running KDE Plasma 6*
 
 This program takes NASA's astronomy picture of the day (APOD), and uses korvexx's included ascii Wallpaper plugin (https://store.kde.org/p/2348111) to turn the apod into ascii art. 

@@ -1,8 +1,8 @@
 ## ascii-apod
 
-## *only compatible with distros running KDE Plasma 6*
+#### *only compatible with distros running KDE Plasma 6*
 
-This program takes NASA's astronomy picture of the day (APOD), and uses korvexx's ascii Wallpaper plugin (https://store.kde.org/p/2348111) to turn the apod into ascii art. *plug-in included*
+This program takes NASA's astronomy picture of the day (APOD), and uses korvexx's included ascii Wallpaper plugin (https://store.kde.org/p/2348111) to turn the apod into ascii art. 
 
 The ascii-apod is then set to your lock screen and/or desktop, daily, updating every evening when NASA posts a new picture.
 
@@ -14,7 +14,9 @@ go to the [latest release](https://github.com/nirvaanbn/ascii-apod/releases/late
 
 ```bash
 cd the/folder/you/downloaded/it/to
+
 chmod +x apod
+
 ./apod install
 ```
 

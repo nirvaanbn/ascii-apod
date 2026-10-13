@@ -1,0 +1,11 @@
+# built programs
+/apod
+/ascii-apod
+/apod-*
+
+# editor leftovers
+*.kate-swp
+.vscode/
+
+# Python cache
+__pycache__/

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
+      http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
+  <kcfgfile name=""/>
+
+  <group name="Wallpaper">
+    <entry name="Mode" type="String">
+      <default>Image</default>
+    </entry>
+    <entry name="Image" type="String">
+      <default></default>
+    </entry>
+    <entry name="Images" type="StringList">
+      <default></default>
+    </entry>
+  </group>
+
+  <group name="Options">
+    <!-- ASCII - Level of Detail
+      2: 8x16  
+      1: 4x8
+      0: 2x4
+     -->
+    <entry name="Detail" type="Int">
+        <default>1</default>
+        <min>0</min>
+        <max>2</max>
+    </entry>
+    <entry name="AsciiChars" type="StringList">
+      <default>\s,.,´,:,r,s,z,u,n,v,c,x,L,O,G,D,Q,0,K,N,M,W,&amp;,@</default>
+    </entry>
+    <entry name="FontFamily" type="String">
+      <default>Monospace</default>
+    </entry>
+    <entry name="Grayscale" type="Bool">
+      <default>false</default>
+    </entry>
+    <entry name="SlideInterval" type="Int">
+        <default>10</default>
+        <min>5</min>
+        <max>3600</max>
+    </entry>
+  </group>
+</kcfg>

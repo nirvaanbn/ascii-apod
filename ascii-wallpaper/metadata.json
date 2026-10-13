@@ -1,0 +1,19 @@
+{
+    "KPackageStructure": "Plasma/Wallpaper",
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "korvexx.dev@proton.me",
+                "Name": "Korvexx"
+            }
+        ],
+        "Category": "",
+        "Description": "See the world of ASCII Wallpapers",
+        "Icon": "preferences-desktop-color",
+        "Id": "de.korvexx.ascii_wallpaper",
+        "License": "AGPLv3+",
+        "Name": "ASCII Wallpaper",
+        "Website": ""
+    },
+    "X-KDE-ParentApp": "org.kde.plasmashell"
+}

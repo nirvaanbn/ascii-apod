@@ -1,0 +1,8 @@
+[Unit]
+Description=Set the newest NASA APOD as the lock screen wallpaper
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/apod
+Restart=on-failure
+RestartSec=10min

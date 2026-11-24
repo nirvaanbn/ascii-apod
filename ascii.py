@@ -107,8 +107,10 @@ def main():
         sys.exit(f"the ASCII Wallpaper plugin ({PLUGIN_ID}) is not installed")
     name, width, height, scale, pixels = pick_screen(sys.argv[3] if len(sys.argv) == 4 else None)
 
+    tries = int(os.environ.get("ASCII_APOD_TRY") or 1)
+    factor = float(os.environ.get("ASCII_APOD_QT_SCALE") or scale)
     os.environ["QT_ENABLE_HIGHDPI_SCALING"] = "0"
-    os.environ["QT_SCALE_FACTOR"] = str(scale)
+    os.environ["QT_SCALE_FACTOR"] = str(factor)
 
     from PySide6.QtCore import QTimer
     from PySide6.QtGui import QGuiApplication
@@ -145,7 +147,13 @@ def main():
 
     def save():
         image = state["grab"].image()
-        image = image.copy(0, 0, min(pixels[0], image.width()), min(pixels[1], image.height()))
+        state["size"] = (image.width(), image.height())
+        if not (0 <= image.width() - pixels[0] <= 1 and 0 <= image.height() - pixels[1] <= 1):
+            screen_scale = round(image.width() / (width * factor) * 120) / 120
+            state["factor"] = scale / screen_scale
+            app.exit(2)
+            return
+        image = image.copy(0, 0, pixels[0], pixels[1])
         if image.save(out):
             print(f"saved {out} ({image.width()} x {image.height()}, for {name})")
             app.exit(0)
@@ -154,7 +162,13 @@ def main():
 
     QTimer.singleShot(30_000, lambda: fail("gave up after 30 seconds (is the screen locked?)"))
     QTimer.singleShot(0, check)
-    sys.exit(app.exec())
+    code = app.exec()
+    if code == 2 and tries < 3:
+        env = dict(os.environ, ASCII_APOD_TRY=str(tries + 1), ASCII_APOD_QT_SCALE=str(state["factor"]))
+        sys.exit(subprocess.run(sys.orig_argv, env=env).returncode)
+    if code == 2:
+        sys.exit(f"rendered at {state['size'][0]} x {state['size'][1]} instead of {pixels[0]} x {pixels[1]}, not saved")
+    sys.exit(code)
 
 
 if __name__ == "__main__":
